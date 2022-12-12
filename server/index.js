@@ -23,17 +23,31 @@ const io = new Server(httpServer, {
     methods: ['GET', 'POST']
   }
 })
+
 const Redis = require('ioredis')
-
-const channelName = 'accounts-channel'
-
-console.log('env.......', process.env)
 
 const redis = new Redis({
   host: process.env.REDIS_HOST,
   port: process.env.REDIS_PORT,
   password: process.env.REDIS_PASS,
   db: 0
+})
+
+//subscribe to a channel to get messages
+redis.subscribe(process.env.REDIS_CHANNEL)
+
+//Listen to Redis connection
+redis.on('connection', () => {
+  console.log('someone connected...')
+})
+redis.on('message', async (channel, payload) => {
+  console.log('data from ', { channel, payload })
+
+  // const data = JSON.parse(payload).data
+
+  // io.emit('accounts_updated', {
+  //   data
+  // })
 })
 
 io.on('connection', socket => {
@@ -50,23 +64,11 @@ io.on('connection', socket => {
   return socket
 })
 
-//Listen to Redis connection
-redis.subscribe(channelName)
-
-redis.on('message', async (channel, payload) => {
-  console.log('data from ', { channel, payload })
-
-  const data = JSON.parse(payload).data
-
-  io.emit('accounts_updated', {
-    data
-  })
-})
-
 app.get('/saySomething', (req, res) => {
   io.emit('accounts_updated', { name: 'Abel Less', age: 41 })
   res.send(res.json({ message: 'Success' }))
 })
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'))
 })
