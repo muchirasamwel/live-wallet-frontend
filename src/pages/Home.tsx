@@ -2,6 +2,7 @@ import { Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import SimpleTable from '../components/tables/SimpleTable'
 import io from 'socket.io-client'
+import { motion } from 'framer-motion'
 const base = process.env.REACT_APP_BASE_URL
 
 type Props = {}
@@ -48,12 +49,14 @@ const Home = (props: Props) => {
   }, [])
 
   return (
-    <Grid container justifyContent={'center'} alignItems='center'>
-      <Grid md={8} sx={{}}>
-        <Typography>Home</Typography>
-        <SimpleTable rows={accounts} cols={columns} />
+    <motion.div layout>
+      <Grid container justifyContent={'center'} alignItems='center'>
+        <Grid md={8} sx={{}}>
+          <Typography>Home</Typography>
+          <SimpleTable rows={accounts} cols={columns} />
+        </Grid>
       </Grid>
-    </Grid>
+    </motion.div>
   )
 }
 export default Home

@@ -1,5 +1,8 @@
-import { Grid } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { Grid, Icon } from '@mui/material'
+import { styled } from '@mui/system'
+import { motion } from 'framer-motion'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import React, { useEffect, useState } from 'react'
 import {
   Link,
   Outlet,
@@ -11,6 +14,84 @@ import User from '../assets/user.png'
 type LoaderData = {
   accounts: Array<object>
 }
+interface Props {
+  className: string
+  children?: JSX.Element | JSX.Element[]
+}
+
+const menuMotion = {
+  rest: {
+    borderWidth: 0,
+    borderColor: 'white',
+    borderStyle: 'solid',
+    transition: {
+      duration: 2,
+      type: 'tween',
+      ease: 'easeIn'
+    }
+  },
+  hover: {
+    borderLeftWidth: 10,
+    transition: {
+      duration: 0.4,
+      type: 'tween',
+      ease: 'easeOut'
+    }
+  }
+}
+
+const iconMotion = {
+  rest: { rotate: 0, color: 'black', duration: 0.2, type: 'tween' },
+  hover: {
+    rotate: 360,
+    transition: {
+      duration: 0.4,
+      type: 'tween',
+      ease: 'easeIn'
+    }
+  },
+  click: {
+    rotate: 360,
+    color: 'red',
+    scale: 10,
+    x: 300,
+    transition: {
+      duration: 0.1
+    }
+  }
+}
+
+// const list = { hidden: { opacity: 1 } }
+// const item = { hidden: { x: 0, opacity: 1 } }
+
+const StyledMoLi = styled(motion.li)({
+  borderWidth: 0,
+  borderColor: 'white',
+  borderStyle: 'solid'
+})
+
+const AnimLi = (props: Props) => (
+  <StyledMoLi
+    initial='rest'
+    whileHover='hover'
+    whileTap='click'
+    animate='rest'
+    {...props}
+    variants={menuMotion}
+  >
+    <Grid
+      display={'flex'}
+      flexDirection={'row'}
+      alignItems='center'
+      sx={{ width: '100%' }}
+    >
+      <motion.div variants={iconMotion}>
+        <AccountCircleIcon />
+      </motion.div>
+      <Grid style={{ width: '100%' }}>{props.children}</Grid>
+    </Grid>
+  </StyledMoLi>
+)
 
 export default function Root () {
   const { accounts } = useLoaderData() as LoaderData
@@ -45,17 +126,17 @@ export default function Root () {
           <img src={User} width='100px' height={'100px'} />
         </Grid>
         <nav>
-          <ul>
-            <li className={active == '/account/1' ? 'active' : ''}>
+          <motion.ul initial={false}>
+            <AnimLi className={active == '/account/1' ? 'active' : ''}>
               <Link to={`account/1`}>Account</Link>
-            </li>
-            <li className={active == '/account/2' ? 'active' : ''}>
+            </AnimLi>
+            <AnimLi className={active == '/account/2' ? 'active' : ''}>
               <Link to={`account/2`}>Account 2</Link>
-            </li>
-            <li className={active == '/accounts' ? 'active' : ''}>
+            </AnimLi>
+            <AnimLi className={active == '/accounts' ? 'active' : ''}>
               <Link to={`accounts`}>Accounts</Link>
-            </li>
-          </ul>
+            </AnimLi>
+          </motion.ul>
         </nav>
       </div>
       <div id='detail'>
