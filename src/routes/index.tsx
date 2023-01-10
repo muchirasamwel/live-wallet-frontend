@@ -17,6 +17,7 @@ type LoaderData = {
 interface Props {
   className: string
   children?: JSX.Element | JSX.Element[]
+  nodata?: boolean
 }
 
 const menuMotion = {
@@ -67,7 +68,10 @@ const iconMotion = {
 const StyledMoLi = styled(motion.li)({
   borderWidth: 0,
   borderColor: 'white',
-  borderStyle: 'solid'
+  borderStyle: 'solid',
+  background: 'red'
+  // borderTopLeftRadius: '20px',
+  // borderBottomLeftRadius: '20px',
 })
 
 const AnimLi = (props: Props) => (
@@ -78,18 +82,23 @@ const AnimLi = (props: Props) => (
     animate='rest'
     {...props}
     variants={menuMotion}
+    style={props.nodata ? { height: '20px' } : {}}
   >
+    {/* <div className='sp1'></div> */}
     <Grid
       display={'flex'}
       flexDirection={'row'}
       alignItems='center'
       sx={{ width: '100%' }}
     >
-      <motion.div variants={iconMotion}>
-        <AccountCircleIcon />
-      </motion.div>
+      {!props.nodata && (
+        <motion.div variants={iconMotion}>
+          <AccountCircleIcon />
+        </motion.div>
+      )}
       <Grid style={{ width: '100%' }}>{props.children}</Grid>
     </Grid>
+    {/* <div className='sp2'></div> */}
   </StyledMoLi>
 )
 
@@ -127,14 +136,46 @@ export default function Root () {
         </Grid>
         <nav>
           <motion.ul initial={false}>
-            <AnimLi className={active == '/account/1' ? 'active' : ''}>
+            <AnimLi
+              className={
+                active == '/account/1'
+                  ? 'active'
+                  : active == '/account/2'
+                  ? 'bottom_curved'
+                  : ''
+              }
+            >
               <Link to={`account/1`}>Account</Link>
             </AnimLi>
-            <AnimLi className={active == '/account/2' ? 'active' : ''}>
+            <AnimLi
+              className={
+                active == '/account/2'
+                  ? 'active'
+                  : active == '/account/1'
+                  ? 'top_curved'
+                  : active == '/accounts'
+                  ? 'bottom_curved'
+                  : ''
+              }
+            >
               <Link to={`account/2`}>Account 2</Link>
             </AnimLi>
-            <AnimLi className={active == '/accounts' ? 'active' : ''}>
+            <AnimLi
+              className={
+                active == '/accounts'
+                  ? 'active'
+                  : active == '/account/2'
+                  ? 'top_curved'
+                  : ''
+              }
+            >
               <Link to={`accounts`}>Accounts</Link>
+            </AnimLi>
+            <AnimLi
+              className={active == '/accounts' ? 'top_curved' : ''}
+              nodata
+            >
+              {/* <Link to={`accounts`}>Accounts</Link> */}
             </AnimLi>
           </motion.ul>
         </nav>
