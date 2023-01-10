@@ -15,119 +15,154 @@ const Accounts = (props: Props) => {
       // animate={{ scale: 1 }}
     >
       <motion.div
-        initial={{ opacity: 0, scaleX: 0 }}
+        initial={{ opacity: 0, borderRadius: '50%', rotate: 10, scaleX: 0 }}
         whileInView={{
           opacity: 1,
+          borderRadius: '20px',
           scaleX: 1,
-          transition: { duration: 0.8, repeat: 0 }
+          rotate: 0,
+          transition: { duration: 1, repeat: 0 }
         }}
         style={{
           alignItems: 'center',
           justifyContent: 'center',
           height: '300px',
-          background: 'red',
+          background: 'white',
+          boxShadow: '2px 4px 8px grey',
+          marginLeft: '20px',
+          marginRight: '20px',
           marginTop: '30px'
         }}
       >
         <div>Accounts:{params?.id}</div>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, scaleX: 0 }}
+        initial={{ opacity: 0, borderRadius: '50%', rotate: 10, scaleX: 0 }}
         whileInView={{
           opacity: 1,
+          borderRadius: '20px',
           scaleX: 1,
-          transition: { duration: 0.8, repeat: 0 }
+          rotate: 0,
+          transition: { duration: 1, repeat: 0 }
         }}
         style={{
           alignItems: 'center',
           justifyContent: 'center',
           height: '300px',
-          background: 'red',
+          background: 'white',
+          boxShadow: '2px 4px 8px grey',
+          marginLeft: '20px',
+          marginRight: '20px',
           marginTop: '30px'
         }}
       >
         <div>Accounts:{params?.id}</div>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, scaleX: 0 }}
+        initial={{ opacity: 0, borderRadius: '50%', rotate: 10, scaleX: 0 }}
         whileInView={{
           opacity: 1,
+          borderRadius: '20px',
           scaleX: 1,
-          transition: { duration: 0.8, repeat: 0 }
+          rotate: 0,
+          transition: { duration: 1, repeat: 0 }
         }}
         style={{
           alignItems: 'center',
           justifyContent: 'center',
           height: '300px',
-          background: 'red',
+          background: 'white',
+          boxShadow: '2px 4px 8px grey',
+          marginLeft: '20px',
+          marginRight: '20px',
           marginTop: '30px'
         }}
       >
         <div>Accounts:{params?.id}</div>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, scaleX: 0 }}
+        initial={{ opacity: 0, borderRadius: '50%', rotate: 10, scaleX: 0 }}
         whileInView={{
           opacity: 1,
+          borderRadius: '20px',
           scaleX: 1,
-          transition: { duration: 0.8, repeat: 0 }
+          rotate: 0,
+          transition: { duration: 1, repeat: 0 }
         }}
         style={{
           alignItems: 'center',
           justifyContent: 'center',
           height: '300px',
-          background: 'red',
+          background: 'white',
+          boxShadow: '2px 4px 8px grey',
+          marginLeft: '20px',
+          marginRight: '20px',
           marginTop: '30px'
         }}
       >
         <div>Accounts:{params?.id}</div>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, scaleX: 0 }}
+        initial={{ opacity: 0, borderRadius: '50%', rotate: 10, scaleX: 0 }}
         whileInView={{
           opacity: 1,
+          borderRadius: '20px',
           scaleX: 1,
-          transition: { duration: 0.8, repeat: 0 }
+          rotate: 0,
+          transition: { duration: 1, repeat: 0 }
         }}
         style={{
           alignItems: 'center',
           justifyContent: 'center',
           height: '300px',
-          background: 'red',
+          background: 'white',
+          boxShadow: '2px 4px 8px grey',
+          marginLeft: '20px',
+          marginRight: '20px',
           marginTop: '30px'
         }}
       >
         <div>Accounts:{params?.id}</div>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, scaleX: 0 }}
+        initial={{ opacity: 0, borderRadius: '50%', rotate: 10, scaleX: 0 }}
         whileInView={{
           opacity: 1,
+          borderRadius: '20px',
           scaleX: 1,
-          transition: { duration: 0.8, repeat: 0 }
+          rotate: 0,
+          transition: { duration: 1, repeat: 0 }
         }}
         style={{
           alignItems: 'center',
           justifyContent: 'center',
           height: '300px',
-          background: 'red',
+          background: 'white',
+          boxShadow: '2px 4px 8px grey',
+          marginLeft: '20px',
+          marginRight: '20px',
           marginTop: '30px'
         }}
       >
         <div>Accounts:{params?.id}</div>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, scaleX: 0 }}
+        initial={{ opacity: 0, borderRadius: '50%', rotate: 10, scaleX: 0 }}
         whileInView={{
           opacity: 1,
+          borderRadius: '20px',
           scaleX: 1,
-          transition: { duration: 0.8, repeat: 0 }
+          rotate: 0,
+          transition: { duration: 1, repeat: 0 }
         }}
         style={{
           alignItems: 'center',
           justifyContent: 'center',
           height: '300px',
-          background: 'red',
+          background: 'white',
+          boxShadow: '2px 4px 8px grey',
+          marginLeft: '20px',
+          marginRight: '20px',
           marginTop: '30px'
         }}
       >
